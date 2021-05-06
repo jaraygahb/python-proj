@@ -24,5 +24,9 @@ pipeline {
 				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest success1_testcase.py'
             }
         }
+		stage('Report') {
+			echo 'Generating test case report'
+			bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=pytest_unit.xml .'
+		}
     }
 }
