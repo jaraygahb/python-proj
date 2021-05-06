@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-				sh 'python count.py'
+				sh "python ${WORKSPACE}/count.py"
             }
         }
         stage('Test') {
