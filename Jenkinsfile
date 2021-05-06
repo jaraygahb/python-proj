@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-				bat 'count.py'
+				sh 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe count.py'
             }
         }
         stage('Test') {
