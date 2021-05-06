@@ -27,7 +27,9 @@ pipeline {
 		stage('Report') {
 			steps {
 				echo 'Generating test case report'
-				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=result.xml ./*.py'
+				dir("testcases"){
+					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=result.xml'
+				}
 				step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
 			}
 		}
