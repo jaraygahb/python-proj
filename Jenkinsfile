@@ -8,9 +8,10 @@ pipeline {
 				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe count.py'
             }
         }
-        stage('Test') {
+        stage('Test Case') {
             steps {
-                echo 'Testing..'
+                echo 'Testing success tests case'
+				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest success_testcase.py'
             }
         }
     }
