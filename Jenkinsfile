@@ -13,21 +13,21 @@ pipeline {
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
 				{
 					echo 'Testing failure test case'
-					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest failure_testcase.py'
+					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/failure_testcase.py'
 				}
             }
         }
 		stage('Sucess Test Case') {
             steps {
                 echo 'Testing success test case'
-				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest success_testcase.py'
-				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest success1_testcase.py'
+				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success_testcase.py'
+				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success1_testcase.py'
             }
         }
 		stage('Report') {
 			steps {
 				echo 'Generating test case report'
-				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=pytest_unit.xml .'
+				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=pytest_unit.xml testcases/'
 			}
 		}
     }
