@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-		stage('CleanWorkspace') {
-            steps {
-                cleanWs()
-            }
-		}
-	
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -39,5 +33,10 @@ pipeline {
 				}
 			}
 		}
+	post {
+        always {
+            cleanWs()
+        }
+    }
     }
 }
