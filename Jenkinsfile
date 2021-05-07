@@ -22,7 +22,6 @@ pipeline {
                 echo 'Testing success test case'
 				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success_testcase.py'
 				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success1_testcase.py'
-				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success1_test_calc.py'
             }
         }
 		stage('Report') {
