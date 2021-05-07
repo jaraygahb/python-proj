@@ -21,9 +21,12 @@ pipeline {
         }
 		stage('Report') {
 			steps {
-				dir("testcases"){
-					echo 'Generating test case report'
-					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m xmlrunner discover'
+				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
+				{
+					dir("testcases"){
+						echo 'Generating test case report'
+						bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m xmlrunner discover'
+					}
 				}
 			}	
 		}
