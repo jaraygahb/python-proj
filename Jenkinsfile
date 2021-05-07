@@ -32,10 +32,5 @@ pipeline {
 				}
 			}	
 		}
-		stage('Publish Report') {
-			steps {
-				step([$class: 'ACIPluginPublisher', name: 'result.xml', shownOnProjectPage: true])
-			}
-		}
     }
 }
