@@ -2,13 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe count.py'
-            }
-        }
-		stage('Sucess Test Case') {
+		stage('Build') {
             steps {
 				catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE')
 				{
@@ -19,7 +13,7 @@ pipeline {
 				}
             }
         }
-		stage('Report') {
+		stage('Publish Report') {
 			steps {
 				catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE')
 				{
