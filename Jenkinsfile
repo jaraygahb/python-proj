@@ -29,8 +29,12 @@ pipeline {
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 					echo 'Generating test case report'
 					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=result.xml testcases/alltests.py'
-					step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
 				}
+			}	
+		}
+		stage('Publish Report') {
+			steps {
+				step([$class: 'ACIPluginPublisher', name: 'result.xml', shownOnProjectPage: true])
 			}
 		}
     }
