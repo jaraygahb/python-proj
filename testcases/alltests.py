@@ -1,5 +1,4 @@
 import unittest
-import xmlrunner
 
 def add_fish_to_aquarium(fish_list):
     if len(fish_list) > 10:
@@ -47,4 +46,10 @@ class TestAddFishToAquarium(unittest.TestCase):
 		
 
 if __name__ == '__main__':
-	unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
+    import xmlrunner
+
+    unittest.main(
+        testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
+        failfast=False,
+        buffer=False,
+        catchbreak=False)
