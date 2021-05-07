@@ -30,6 +30,19 @@ class TestCalc(unittest.TestCase):
             calc.divide(10, 0)
 
 
+@unittest.skip("message")
+class SkipTest(unittest.TestCase):
+    def runTest(self):
+        self.assertEqual(1, 1)
+
+class MyTest(unittest.TestCase):
+    def runTest(self):
+        self.assertEqual(2, 2)
+
+suite = unittest.TestSuite([SkipTest(), MyTest()])
+unittest.TextTestRunner(verbosity=2).run(suite)
+
+
 if __name__ == '__main__':
     import xmlrunner
 
