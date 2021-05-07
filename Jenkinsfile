@@ -26,13 +26,11 @@ pipeline {
         }
 		stage('Report') {
 			steps {
-				
-				echo 'Generating test case report'
-				dir("testcases"){
-					catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
-					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=result.xml alltests.py'
+				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+					echo 'Generating test case report'
+					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=result.xml testcases/alltests.py'
+					step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
 				}
-				step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
 			}
 		}
     }
