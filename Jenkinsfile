@@ -10,7 +10,7 @@ pipeline {
         }
 		stage('Sucess Test Case') {
             steps {
-				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
+				catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE')
 				{
 					dir("testcases"){
 						echo 'Testing success test case'
@@ -21,7 +21,7 @@ pipeline {
         }
 		stage('Report') {
 			steps {
-				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
+				catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE')
 				{
 					dir("testcases"){
 						echo 'Generating test case report'
