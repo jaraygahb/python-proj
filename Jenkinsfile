@@ -30,7 +30,7 @@ pipeline {
 					echo 'Generating test case report'
 					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m xmlrunner discover'
 				//	junit healthScaleFactor: 10.0, testResults: 'testcases/*.xml'
-					step([$class: 'ACIPluginPublisher', name: 'testcases/*.xml', shownOnProjectPage: true])
+					step([$class: 'JUnitResultArchiver', name: 'testcases/*.xml', shownOnProjectPage: true])
 				}
 			}	
 		}
