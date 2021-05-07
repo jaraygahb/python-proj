@@ -22,15 +22,14 @@ pipeline {
                 echo 'Testing success test case'
 				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success_testcase.py'
 				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success1_testcase.py'
+				bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m unittest testcases/success1_test_calc.py'
             }
         }
 		stage('Report') {
 			steps {
-				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 					echo 'Generating test case report'
-					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m pytest --junit-xml=result.xml testcases/alltests.py'
-				}
+					bat 'C:/Users/Unique/AppData/Local/Programs/Python/Python39/python.exe -m xmlrunner discover'
 			}	
 		}
-    }
+	}
 }
