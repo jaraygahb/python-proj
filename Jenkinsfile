@@ -24,6 +24,19 @@ pipeline {
 				}
 			}	
 		}
+		stage('Sonarqube') {
+			environment {
+			scannerHome = tool 'SonarQubeScanner'
+			}
+			steps {
+				withSonarQubeEnv('sonarqube') {
+				bat 'H:/sonar-scanner-cli-4.6.1.2450-windows/sonar-scanner-4.6.1.2450-windows/bin/sonar-scanner.bat'
+				}
+				timeout(time: 10, unit: 'MINUTES') {
+				waitForQualityGate abortPipeline: true
+				}
+			}
+		}
 	}
 	post {
     always {
